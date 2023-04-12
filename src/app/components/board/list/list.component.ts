@@ -44,7 +44,6 @@ export class ListComponent implements OnInit {
 
   delete() {
     this.deleteList.emit(this.listIndex);
-
   }
 
 

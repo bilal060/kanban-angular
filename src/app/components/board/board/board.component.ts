@@ -4,8 +4,7 @@ import { MovementIntf } from 'src/app/model/card/movement';
 import { BoardService } from '../../../service/board/board-service';
 import { BoardModel } from '../../../model/board/board.model';
 import { LocalService } from '../../../service/board/local/local.service';
-
-
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-board',
@@ -16,8 +15,13 @@ export class BoardComponent implements OnInit {
 
 
   lists: ListInterface[] | undefined;
+  searchForm: any;
 
-  constructor(private localService: LocalService) { }
+  constructor(private localService: LocalService, private formBuilder: FormBuilder) {
+    this.searchForm = this.formBuilder.group({
+      search: '',
+    });
+  }
 
   ngOnInit() {
 

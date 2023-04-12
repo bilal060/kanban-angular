@@ -20,6 +20,7 @@ export class SummaryComponent implements OnInit {
   }
 
   identifyCardBeingDragged(dragEvent: DragEvent) {
+
     dragEvent.dataTransfer.effectAllowed = 'move'
     dragEvent.dataTransfer.dropEffect= 'move'
     const transferObject = {
