@@ -1,0 +1,17 @@
+<div style="position: relative;">
+  <div class="right" (click)="this.show = true" style="line-height: 5px;float: right;cursor: pointer;">
+    <svg width="15" height="5">
+      <circle cx="2" cy="2" r="1.5" fill="grey"></circle>
+      <circle cx="7" cy="2" r="1.5" fill="grey"></circle>
+      <circle cx="12" cy="2" r="1.5" fill="grey"></circle>
+    </svg>
+  </div>
+  <div *ngIf="show">
+    <div
+      class="dropdown-menu dropdown-menu-sm show absolute text-md bg-white p-2 border-1 border-gray-400 border-round-md"
+      style="top: 5px;left: inherit;right: 0px;min-width: 5rem;">
+      <a class="dropdown-item" href="#" (click)="emitCloseEvent()">Delete</a>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

@@ -1,0 +1,8 @@
+<div class="mb-3" [draggable]="'true'" (dragstart)="identifyCardBeingDragged($event)"
+  id="list-{{listIndex}}-card-{{cardIndex}}" attr.listIndex="{{listIndex}}" attr.cardIndex="{{cardIndex}}"
+  (dragover)="allowCardDragToBeDropped($event)">
+  <div class="p-2 border-round-sm bg-white">
+    <h4 class="no-wrap center m-0 text-orange-600" [(appContentEdit)]="card.header" [draggable]="'false'"> </h4>
+    <p class="no-wrap" [(appContentEdit)]="card.summary" [draggable]="'false'"></p>
+  </div>
+</div>
