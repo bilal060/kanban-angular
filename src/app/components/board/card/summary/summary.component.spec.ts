@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SummaryComponent } from './summary.component';
-import {Card} from '../../../../model/card/card.model';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { Card } from '../../../../model/card/card.model';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContentEditDirective } from 'src/app/directives/common/content-edit.directive';
 
 describe('SummaryComponent', () => {
@@ -10,17 +10,17 @@ describe('SummaryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SummaryComponent ,
-        ContentEditDirective ],
-      imports: [ FormsModule, ReactiveFormsModule ]
+      declarations: [SummaryComponent,
+        ContentEditDirective],
+      imports: [FormsModule, ReactiveFormsModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SummaryComponent);
     component = fixture.componentInstance;
-    component.card = new Card('1', 'header', 'summary', 'description')
+    component.card = new Card('1', 'header', 'summary', 'description', 'medium', '1132', 'process')
     fixture.detectChanges();
   });
 

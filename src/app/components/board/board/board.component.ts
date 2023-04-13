@@ -4,7 +4,7 @@ import { MovementIntf } from 'src/app/model/card/movement';
 import { BoardService } from '../../../service/board/board-service';
 import { BoardModel } from '../../../model/board/board.model';
 import { LocalService } from '../../../service/board/local/local.service';
-import {FormBuilder} from "@angular/forms";
+import { FormBuilder } from "@angular/forms";
 
 @Component({
   selector: 'app-board',
@@ -16,9 +16,13 @@ export class BoardComponent implements OnInit {
 
   lists: ListInterface[] | undefined;
   searchForm: any;
+  searchByPriority: any;
 
   constructor(private localService: LocalService, private formBuilder: FormBuilder) {
     this.searchForm = this.formBuilder.group({
+      search: '',
+    });
+    this.searchByPriority = this.formBuilder.group({
       search: '',
     });
   }
@@ -26,26 +30,26 @@ export class BoardComponent implements OnInit {
   ngOnInit() {
 
     const board = this.localService.getBoard();
-    this.lists = board.lists ||[
-          {
-            "id": '1',
-            "cards": [],
-            "position": 1,
-            "name": "Todo"
-          },
-          {
-            "id": '2',
-            "cards": [],
-            "position": 2,
-            "name": "InProgress"
-          },
-          {
-            "id": '3',
-            "cards": [],
-            "position": 3,
-            "name": "Completed"
-          }
-        ];
+    this.lists = board.lists || [
+      {
+        "id": '1',
+        "cards": [],
+        "position": 1,
+        "name": "Todo"
+      },
+      {
+        "id": '2',
+        "cards": [],
+        "position": 2,
+        "name": "InProgress"
+      },
+      {
+        "id": '3',
+        "cards": [],
+        "position": 3,
+        "name": "Completed"
+      }
+    ];
 
     // ideally retrive and initialize from some storage.
 

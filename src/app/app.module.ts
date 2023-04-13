@@ -14,7 +14,7 @@ import { LocalService } from './service/board/local/local.service';
 import { ContextMenuComponent } from './components/common/contextmenu/context-menu.component';
 import { SearchFilterPipe } from './search-filter.pipe';
 
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -33,6 +33,7 @@ import { SearchFilterPipe } from './search-filter.pipe';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
 
   ],
   providers: [LocalService],

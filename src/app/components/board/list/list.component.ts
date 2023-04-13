@@ -24,14 +24,26 @@ export class ListComponent implements OnInit {
 
   private cardCount = 0;
 
-  constructor(private elementRef: ElementRef, @Inject(DOCUMENT) private document: Document) { }
+  constructor(
+    private elementRef: ElementRef,
+    @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit() {
 
   }
 
   addNewCard() {
-    const card = new Card(this.cardCount++ + '', 'header' + this.cardCount, 'summary' + this.cardCount, 'sample desc');
+    const today = new Date();
+    let yyyy = today.getFullYear()
+    let mm = today.getMonth() + 1; // Months start at 0!
+    let dd = today.getDate();
+
+    if (dd < 10) dd = dd;
+    if (mm < 10) mm = mm;
+
+    const formattedToday = dd + '/' + mm + '/' + yyyy;
+
+    const card = new Card(this.cardCount++ + Math.floor((Math.random() * 100000)) + '', 'header' + this.cardCount, 'summary' + this.cardCount, 'sample desc', 'medium', formattedToday, 'In review');
     this.list.cards.push(card);
     this.newCardAdded.emit(card);
   }
@@ -46,7 +58,9 @@ export class ListComponent implements OnInit {
     this.deleteList.emit(this.listIndex);
   }
 
-
+  CardDelete() {
+    // this.card
+  }
   dropCard(dragEvent: DragEvent) {
     const data = JSON.parse(dragEvent.dataTransfer.getData('text'));
     const elements: Element[] = this.document.elementsFromPoint(dragEvent.x, dragEvent.y);
