@@ -17,6 +17,16 @@ export class BoardComponent implements OnInit {
   lists: ListInterface[] | undefined;
   searchForm: any;
   searchByPriority: any;
+  public status: { field: string }[] = [
+    { field: 'Option 1' },
+    { field: 'Option 2' },
+    { field: 'Option 3' }
+  ];
+
+  sortOrders: string[] = ["Priority", "High", "Medium", "Low"];
+  selectedSortOrder: string = "Priority";
+  sortStatus: string[] = ["Status", "In review", "Process", "Blocked"];
+  selectedSortStatus: string = "Status";
 
   constructor(private localService: LocalService, private formBuilder: FormBuilder) {
     this.searchForm = this.formBuilder.group({
@@ -26,7 +36,12 @@ export class BoardComponent implements OnInit {
       search: '',
     });
   }
-
+  ChangeSortOrder(newSortOrder: string) {
+    this.selectedSortOrder = newSortOrder;
+  }
+  ChangeSortStatus(newSortOrder: string) {
+    this.selectedSortStatus = newSortOrder;
+  }
   ngOnInit() {
 
     const board = this.localService.getBoard();
@@ -50,9 +65,6 @@ export class BoardComponent implements OnInit {
         "name": "Completed"
       }
     ];
-
-    // ideally retrive and initialize from some storage.
-
   }
 
   addList() {

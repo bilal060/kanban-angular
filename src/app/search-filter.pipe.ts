@@ -13,10 +13,13 @@ export class SearchFilterPipe implements PipeTransform {
       list.map(l => {
         let cards = [];
         l.cards.map(c => {
-          console.log(c.header.toUpperCase())
           if (
-            (c.header.toUpperCase()).indexOf(args[0].toUpperCase()) !== -1 ||
-            (c.summary.toUpperCase()).indexOf(args[0].toUpperCase()) !== -1) {
+              (
+                  ((c.header.toUpperCase()).indexOf(args[0].toUpperCase()) !== -1 ||
+              (c.summary.toUpperCase()).indexOf(args[0].toUpperCase()) !== -1)) &&
+              (args[2] !== 'Priority' ? c.priority.toUpperCase()===args[2].toUpperCase(): true) &&
+              (args[1] !== 'Status' ? c.status.toUpperCase()===args[1].toUpperCase(): true)
+          ) {
             cards.push(c);
           }
           return c

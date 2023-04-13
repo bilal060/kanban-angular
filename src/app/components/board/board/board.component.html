@@ -15,39 +15,23 @@
             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
         </div>
       </form>
+
       <div ngbDropdown class="d-inline-block">
-        <button type="button" class="btn btn-outline-info" id="dropdownBasic1" ngbDropdownToggle>
-          Priority
-        </button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem>High</button>
-          <button ngbDropdownItem>Medium</button>
-          <button ngbDropdownItem>Low</button>
+        <button class="btn btn-outline-primary" id="sortMenu" ngbDropdownToggle>{{selectedSortOrder}}</button>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="sortMenu">
+          <button ngbDropdownItem class="dropdown-item" *ngFor="let sortOrder of sortOrders" (click)="ChangeSortOrder(sortOrder)" >{{sortOrder}}</button>
         </div>
       </div>
       <div ngbDropdown class="d-inline-block">
-        <button type="button" class="btn btn-outline-success" id="dropdownBasic1" ngbDropdownToggle>
-          Status
-        </button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem>In review</button>
-          <button ngbDropdownItem>Process</button>
-          <button ngbDropdownItem>Blocked</button>
-        </div>
-      </div>
-      <div ngbDropdown class="d-inline-block">
-        <button type="button" class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle>
-          Due Date
-        </button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem>Last First</button>
-          <button ngbDropdownItem>Latest First</button>
+        <button class="btn btn-outline-primary" id="sortMenu1" ngbDropdownToggle>{{selectedSortStatus}}</button>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="sortMenu">
+          <button ngbDropdownItem class="dropdown-item" *ngFor="let sortStatus of sortStatus" (click)="ChangeSortStatus(sortStatus)" >{{sortStatus}}</button>
         </div>
       </div>
 
     </div>
     <div class="flex gap-3 card-container overflow-x-auto	pb-4">
-      <app-list *ngFor="let list of lists| searchFilter: searchForm.value.search;let i = index" [list]="list"
+      <app-list *ngFor="let list of lists| searchFilter: searchForm.value.search: selectedSortStatus: selectedSortOrder;let i = index" [list]="list"
         [listIndex]="i" (moveCardAcrossList)="moveCardAcrossList($event)" (deleteList)="deleteList($event)"
         attr.listIndex="{{i}}"></app-list>
       <div class="flex-1" style="margin:10px;padding:15px;padding-top:15px;padding-bottom:15px;">
