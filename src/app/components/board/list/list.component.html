@@ -1,8 +1,7 @@
-<div class="bg-gray-50 m-0 p-3 border border-top-3 border-blue-500 border-round-md w-20rem"
+<div class="bg-gray-50 m-0 p-3 border border-top-3 border-blue-500 border-round-md w-15rem"
   (dragover)="allowCardReplacement($event)" (drop)="dropCard($event)" id="list-{{listIndex}}">
   <app-context-menu (contextAction)="delete()"></app-context-menu>
-  <p class="text-center text-blue-600 font-semibold line-heading" [(appContentEdit)]="list.name">({{list.cards.length}})
-  </p>
+  ({{list.cards.length}})<p class="text-center text-blue-600 font-semibold line-heading" [(appContentEdit)]="list.name"></p>
 
   <!-- List Card Starts -->
   <div id="list-one">
